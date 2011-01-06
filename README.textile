@@ -12,7 +12,7 @@ p. Note: the extension has been tested and is known to work in Safari 5.03 on OS
 
 h2. Installation Instructions
 
-# Download the Resizer Safari Extension here: "https://github.com/downloads/sixfoot1/Resizer/Resizer.0.4.safariextz":https://github.com/downloads/sixfoot1/Resizer/Resizer.0.4.safariextz
+# Download the Resizer Safari Extension here: "http://cloud.github.com/downloads/sixfoot1/Resizer/Resizer.0.4.safariextz":http://cloud.github.com/downloads/sixfoot1/Resizer/Resizer.0.4.safariextz
 # Double-click the extension file in your Download folder.
 # Click "Install" when prompted.
 # Open Safari preferences.
