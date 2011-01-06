@@ -1,6 +1,7 @@
 h1. Resizer - A Safari Extension
 
 p. Website URL: "http://sixfoot1.com/safari-extensions/resizer/(Resizer Safari extension web URL)":http://sixfoot1.com/safari-extensions/resizer/
+
 p. GitHub repository: "https://github.com/sixfoot1/Resizer(Resizer Safari extension GitHub repository)":https://github.com/sixfoot1/Resizer
 
 
