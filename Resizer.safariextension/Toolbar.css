@@ -1,0 +1,56 @@
+body {
+	font: 11px/15px 'Lucida Grande',sans-serif;
+	overflow: hidden;
+	margin: 0 4px;
+	padding: 0;
+}
+
+.resizerButton {
+	display: block;
+	float: left;
+	clear: none;
+	margin: 4px 2px;
+	border: 1px solid #4e4e4e;
+	-webkit-border-radius: 3px;
+	height: 22px;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#a9a9a9));
+	color: #1e1e1e;
+	text-shadow: rgba(255,255,255,.5) 0 1px 0 !important;
+	backgroundtext-shadow: rgba(255,255,255,.5) 0 1px 0;
+	-webkit-box-shadow: rgba(255,255,255,.18) 0 1px 0;
+}
+
+.resizerButton:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e0e0e0), to(#a1a1a1));
+	color: #0000CC;
+}
+
+.resizerButton:active {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#848484), to(#a1a1a1));
+	-webkit-box-shadow: inset 0 0 4px #000;
+	color: #000099;
+}
+
+#close {
+  float:right;
+  margin:4px 2px;
+}
+
+.closeResizerBar {
+	display: block;
+	float: right;
+	clear: none;
+	margin: 9px 2px 8px 2px;
+	border: 0;
+	height: 13px;
+	width: 12px;
+	background: url(CloseResizerBar1.png) no-repeat;
+}
+
+.closeResizerBar:hover {
+	background: url(CloseResizerBar2.png) no-repeat;
+}
+
+.closeResizerBar:active {
+	background: url(CloseResizerBar3.png) no-repeat;
+}

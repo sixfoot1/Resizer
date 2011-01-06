@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Resizer</title>
+		<meta http-equiv="content-type" value="text/html">
+		<link rel="stylesheet" href="Toolbar.css" />
+		
+		<script>
+			function performCommand(event)
+			{
+				const gl = safari.extension.globalPage.contentWindow;
+				const go = safari.extension.settings;
+
+				if (event.command === "toggle-window")
+				{
+					if(go.getItem("ToolbarButtonOption") == "ToggleWindowSize")
+					{
+						gl.getSettings("TBenabled");
+						for (i = 0; i < gl.setting.length; i++)
+						{						
+							if (gl.setting[i].Width == window.outerWidth &&
+								gl.setting[i].Height == window.outerHeight)
+							{
+								i++;
+								break;
+							}
+						}
+						var i = (i == gl.setting.length) ? 0 : i;
+						window.moveTo(gl.setting[i].Left,gl.setting[i].Top);
+						window.resizeTo(gl.setting[i].Width,gl.setting[i].Height);
+						window.moveTo(gl.setting[i].Left,gl.setting[i].Top);
+					}
+					
+					if(go.getItem("ToolbarButtonOption") == "ToggleResizerBar")
+					{
+						if (safari.self.visible)
+					    {
+							safari.self.hide();
+						}
+					    else
+						{
+					    	safari.self.show();
+						}
+					}
+				}
+				
+				if (event.command.indexOf("resize-") != -1)
+				{
+					var i = parseInt(event.command.substr(7,1));
+					gl.getSettings("all");
+					window.moveTo(gl.setting[i].Left,gl.setting[i].Top);
+					window.resizeTo(gl.setting[i].Width,gl.setting[i].Height);
+					window.moveTo(gl.setting[i].Left,gl.setting[i].Top);
+				}
+			}
+
+			function handleContextMenu(event)
+			{
+				const gl = safari.extension.globalPage.contentWindow;
+				const go = safari.extension.settings;
+				const ev = event.contextMenu;
+				
+				if (go.getItem("EnableContextMenu") == true)
+				{
+					ev.appendContextMenuItem("toggle-window","Resizer - toggle window");
+
+					gl.getSettings("CMenabled");
+					for (i = 0; i < gl.setting.length; i++)
+					{						
+						ev.appendContextMenuItem("resize-"+i,"   " + gl.setting[i].Name);
+					}
+				}
+			}
+			
+			function handleResizeBarButton(i)
+			{
+				const gl = safari.extension.globalPage.contentWindow;
+				const go = safari.extension.settings;
+
+				gl.getSettings("all");
+
+				if (go.getItem("AutoHideToolbar") == true)
+				{
+					safari.self.hide();
+				}
+				
+				window.moveTo(gl.setting[i].Left,gl.setting[i].Top);
+				window.resizeTo(gl.setting[i].Width,gl.setting[i].Height);
+				window.moveTo(gl.setting[i].Left,gl.setting[i].Top);
+			}
+			
+			function handleInjectedMessage(event)
+			{
+				const gl = safari.extension.globalPage.contentWindow;
+				const go = safari.extension.settings;
+				
+				if (go.getItem("EnableKeyboardShortcuts") == true)
+				{
+					if(event.name === "resize")
+				    {
+						var i = event.message;
+						gl.getSettings("all");
+						window.moveTo(gl.setting[i].Left,gl.setting[i].Top);
+						window.resizeTo(gl.setting[i].Width,gl.setting[i].Height);
+						window.moveTo(gl.setting[i].Left,gl.setting[i].Top);
+				    }
+				}
+			}
+			
+			function populateButtonValues()
+			{
+				const gl = safari.extension.globalPage.contentWindow;
+				gl.getSettings("all");
+				
+				for (var i = 0; i < 10; i++)
+				{
+					var button = document.getElementById("resizer-" + i);
+					button.value = gl.setting[i].Name;
+					button.title = gl.setting[i].Name;
+				}
+			}
+		
+			function closeResizerBar()
+			{
+				safari.self.hide();
+			}
+			
+			safari.self.browserWindow.addEventListener("command", performCommand, false);
+			safari.self.browserWindow.addEventListener("contextmenu", handleContextMenu, false);
+			safari.extension.settings.addEventListener("change", populateButtonValues, false);
+			safari.application.activeBrowserWindow.addEventListener("message",handleInjectedMessage,false);
+			addEventListener("load", populateButtonValues, false);
+		</script>
+	</head>
+	<body>
+		<input type="button" id="" value="" class="closeResizerBar" title="Close Resizer Bar" onclick="closeResizerBar()" />
+		<input type="button" id="resizer-0" value="Setting 1" class="resizerButton" title="Setting 1" onclick="handleResizeBarButton('0')" />
+		<input type="button" id="resizer-1" value="Setting 2" class="resizerButton" title="Setting 2" onclick="handleResizeBarButton('1')" />
+		<input type="button" id="resizer-2" value="Setting 3" class="resizerButton" title="Setting 3" onclick="handleResizeBarButton('2')" />
+		<input type="button" id="resizer-3" value="Setting 4" class="resizerButton" title="Setting 4" onclick="handleResizeBarButton('3')" />
+		<input type="button" id="resizer-4" value="Setting 5" class="resizerButton" title="Setting 5" onclick="handleResizeBarButton('4')" />
+		<input type="button" id="resizer-5" value="Setting 6" class="resizerButton" title="Setting 6" onclick="handleResizeBarButton('5')" />
+		<input type="button" id="resizer-6" value="Setting 7" class="resizerButton" title="Setting 7" onclick="handleResizeBarButton('6')" />
+		<input type="button" id="resizer-7" value="Setting 8" class="resizerButton" title="Setting 8" onclick="handleResizeBarButton('7')" />
+		<input type="button" id="resizer-8" value="Setting 9" class="resizerButton" title="Setting 9" onclick="handleResizeBarButton('8')" />
+		<input type="button" id="resizer-9" value="Setting 10" class="resizerButton" title="Setting 10" onclick="handleResizeBarButton('9')" />
+	</body>
+</html>

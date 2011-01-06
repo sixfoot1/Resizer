@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Resizer</title>
+		<meta http-equiv="content-type" value="text/html">
+		<script>
+			const 	go 			= 	safari.extension.settings;
+			const 	bars 		= 	safari.extension.bars;
+			const 	active 		= 	safari.application.activeBrowserWindow;
+			var 	setting 	= 	new Array();
+
+			for (var i = 0; i < bars.length; i++)
+			{
+				var bar = bars[i];
+				if (bar.browserWindow === active && bar.identifier === "com.sixfoot1.resizer.bar")
+				{
+					bar.hide();
+				}
+			}		
+			
+			function data(Toolbar,ResizerBar,Context,Name,Top,Left,Width,Height)
+			{
+				this.Toolbar	= 	Toolbar;
+				this.ResizerBar	= 	ResizerBar;
+				this.Context	= 	Context;
+				this.Name 		= 	Name;
+				this.Top 		= 	Top;
+				this.Left 		= 	Left;
+				this.Width 		= 	Width;
+				this.Height 	= 	Height;
+			}
+			
+			function getSettings(x)
+			{
+				setting			= 	[];
+				
+				for (var i = 0; i < 10; i++)
+				{
+					Toolbar		= 	go.getItem("Toolbar"+i);
+					ResizerBar	= 	go.getItem("ResizerBar"+i);
+					Context		= 	go.getItem("Context"+i);
+					Name 		= 	go.getItem("Name"+i);
+					Top 		= 	go.getItem("Top"+i);
+					Left 		= 	go.getItem("Left"+i);
+					Width 		= 	go.getItem("Width"+i);
+					Height 		= 	go.getItem("Height"+i);
+
+					Width 		=	(Width == "max" && Left != "half") ? screen.availWidth - 2 * Left : 
+									(Width == "max" && Left == "half") ? screen.availWidth : 
+									(Width == "half") ? Math.floor(screen.availWidth/2) : 
+									Width;
+					
+					Height 		= 	(Height == "max" && Top != "half") ? screen.availHeight - 2 * Top : 
+									(Height == "max" && Top == "half") ? screen.availHeight : 
+									(Height == "half") ? Math.floor(screen.availHeight/2) : 
+									Height;
+
+					Top 		= 	(Top == "center" || Top == "centre") ? Math.floor(screen.availHeight/2 - Height/2) :
+									(Top == "half") ? Math.floor(screen.availHeight/2 + 1) :
+									Top;
+
+					Left 		= 	(Left == "center" || Left == "centre") ? Math.floor(screen.availWidth/2 - Width/2) : 
+									(Left == "half") ? Math.floor(screen.availWidth/2 + 1) :
+									Left;
+					
+					switch(x)
+					{
+						case "all":
+							setting[i] = new data(Toolbar,ResizerBar,Context,Name,Top,Left,Width,Height);
+						break;
+						
+						case "TBenabled": // settings enabled for the main Toolbar Button
+							if (Toolbar == true)
+							{
+								setting.push(new data(Toolbar,ResizerBar,Context,Name,Top,Left,Width,Height));
+							}
+						break;
+						
+						case "RBenabled": // settings enabled for the Resizer Bar
+							if (ResizerBar == true)
+							{
+								setting.push(new data(Toolbar,ResizerBar,Context,Name,Top,Left,Width,Height));
+							}
+						break;
+						
+						case "CMenabled": // settings enabled in the Context Menu
+							if (Context == true)
+							{
+								setting.push(new data(Toolbar,ResizerBar,Context,Name,Top,Left,Width,Height));
+							}
+						break;
+					}
+				}
+			}
+		</script>
+	</head>
+	<body></body>
+</html>
