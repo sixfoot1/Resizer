@@ -1,2 +1,18 @@
-.DS_Store
+# OS files #
+############
+.DS_Store?
+ehthumbs.db
+Icon?
 Thumbs.db
+
+
+# Project Folders #
+###################
+Resizer.packages/
+Resizer.resources/
+Resizer.zipfiles/
+
+
+# Project Files #
+#################
+Resizer.tmproj
