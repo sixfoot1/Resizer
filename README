@@ -1,0 +1,37 @@
+Resizer - a Safari extension
+http://sixfoot1.com/safari-extensions/resizer/
+
+
+Introduction
+============
+
+Resizer adds a single button to your Safari toolbar that will enable you to resize your browser window easily. The extension has 10 user configurable window settings (that can be named and enabled/disabled) and clicking the toolbar button will cycle through them in order. Alternatively the toolbar button can be used to show/hide the Resizer Bar giving easy access to your window settings. You can also select any of your enabled settings directly from the contextual menu or via keyboard shortcuts using the option key (⌥1 through ⌥0).
+
+Note: the extension has been tested and is known to work in Safari 5.03 on OS X 10.5 Leopard (PowerPC) & 10.6 Snow Leopard (Intel) — it does not work in Safari on Windows (no idea why) but let me know if you find otherwise. Resizer is freeware — you can do whatever you like with it but a link back in this direction would be appreciated.
+
+
+Installation Instructions
+=========================
+
+1. Download the Resizer Safari Extension.
+2. Double-click the extension file in your Download folder.
+3. Click "Install" when prompted.
+4. Open Safari preferences.
+5. Click on "Extensions" in the toolbar.
+6. Click on "Resizer" in the left column.
+7. Enter your preferred window settings...
+
+7.1 The toolbar button can be configured to cycle through your enabled window settings or show/hide the Resizer Bar.
+7.2 The contextual menu can be enabled/disabled via a checkbox.
+7.3 Keyboard shortcuts can be enabled/disabled via a checkbox. To switch between settings via the keyboard use the option key (⌥) and one of the number keys (⌥1 through ⌥0). These key combinations are usually used for special characters — Resizer knows this and will not invoke any settings while a form text input field has focus.
+7.4 Each of the 10 settings can be enabled/disabled separately for the toolbar button and/or the contextual menu via a checkbox.
+Each setting can be given a name — this will be used in the contextual menu and in the Resizer Bar buttons.
+7.5 The offset values form the XY co-ordinate of the top left corner of the browser window — this is where your window will be moved to and the values should be entered in pixels.
+7.6 You can optionally use "centre" (or "center" if you feel that way inclined) in the offsets to centre the window horizontally and/or vertically.
+7.7 You can also use "half" in the offset settings to move the window to the bottom or right half of the screen.
+7.8 Window width and height values are specified in pixels.
+7.9 You can optionally enter "max" in the width and height settings to have Safari use all the available screen width or height. When using the "max" setting the left/right offsets will be equal, as will the top/bottom offsets.
+7.10 Width and height settings can also be set to "half" and the window will be resized to half the available space in each direction.
+7.11 The default settings provide examples of what can be achieved using the above settings.
+
+8. Go back to your browser window, click on the new toolbar button, hit a keyboard shortcut or right-click on web page and select one of your settings from the contextual menu to watch your browser cycle through the window settings or resize immediately to your preferred size. Smart!
